@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Vault</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- AUDIO -->
+    <audio id="bgMusic" loop>
+        <source src="assets/audio/bg.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- SFX for futuristic opening (Optional, uses same bg if file missing) -->
+    <audio id="openSfx">
+        <source src="assets/audio/bg.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- WELCOME SCREEN -->
+    <section id="welcome" class="screen active">
+        <img src="assets/images/welcome.jpg" class="bg" alt="Welcome Background">
+        <div class="overlay"></div>
+
+        <div class="content center">
+            <h1 id="typingText"></h1>
+            <button onclick="startExperience()">Enter Vault</button>
+        </div>
+    </section>
+
+    <!-- LOCK SCREEN -->
+    <section id="lock" class="screen">
+        <img src="assets/images/welcome1.jpg" class="bg" alt="Lock Background">
+        <div class="overlay"></div>
+
+        <div class="content center">
+            <h2>Identity Verification</h2>
+            <p class="hint">Passcode: The day it all started</p>
+            <div class="input-group">
+                <input type="password" id="passInput" placeholder="DDMMYYYY" maxlength="8">
+            </div>
+            <button onclick="unlock()">Authenticate</button>
+            <p id="error"></p>
+        </div>
+    </section>
+
+    <!-- VAULT SCREEN -->
+    <section id="vault" class="screen">
+        <div class="vault-container">
+            <p id="timeMessage" class="time-msg"></p>
+
+            <div id="moments">
+                <!-- Images injected via JS -->
+            </div>
+
+            <div class="final">
+                <h2>still you.</h2>
+                <p>I choose you. Still. Always.</p>
+                <p>Every Time</p>
+                <div class="heart-seal">🖤</div>
+            </div>
+
+            <!-- New Button for Secret Message -->
+            <div class="secret-trigger-container">
+                <button class="futuristic-btn" onclick="openSecret()">
+                    <span class="btn-text">ACCESS RESTRICTED FILE</span>
+                    <span class="btn-glitch"></span>
+                </button>
+            </div>
+
+            <div class="sealed" id="sealedLetter">
+                <h3>Sealed Letter</h3>
+                <p id="sealedText"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECRET OVERLAY (FUTURISTIC UI) -->
+    <div id="secret">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span>SECURE_CONNECTION_ESTABLISHED</span>
+                <button class="close-btn" onclick="closeSecret()">[ CLOSE ]</button>
+            </div>
+            <div class="scan-line"></div>
+
+            <div class="secret-content">
+                <p class="intro-secret">
+                    // SYSTEM MESSAGE: You stayed long enough to find this.
+                    // DECRYPTING MESSAGE...
+                </p>
+                <br>
+                <div class="letter-body">
+                    <p>My Love,</p>
+                    <p>From the very first day, something in me went quiet in the best way. Not loud butterflies. Not
+                        chaos.
+                        Just a calm voice that said, “This is her.”</p>
+                    <p>Eight months later, that voice hasn’t changed. It’s stronger. Clearer. Certain.</p>
+                    <p>I love you in a way that doesn’t rush and doesn’t doubt. A love that watches you closely, learns
+                        you
+                        gently, and chooses you deliberately — every single day.</p>
+                    <p>I love your softness. I love your strength. I love the way your presence makes the world slow
+                        down
+                        for me, like nothing else matters when you’re near.</p>
+                    <p>You don’t complete me, you walk with me. Side by side. Equal. Chosen. And that matters more than
+                        anything.</p>
+                    <p>There are a thousand versions of life I could live, but this one with you is the one I would pick
+                        again and again without hesitation.</p>
+                    <p>I’m not here for a season. I’m not here for convenience. I’m here with intention, patience, and a
+                        future in my heart.</p>
+                    <p>Eight months is not the achievement. What matters is that I still look at you and think, “Yes.
+                        Her.
+                        Still her.”</p>
+                    <p>And if time allows us many more months and years, I promise this: I will keep choosing you
+                        calmly,
+                        honestly, and fully — not just in words, but in actions, loyalty, and love that stays.</p>
+                    <p>This is me, standing here, not asking for forever but offering it.</p>
+                    <p>Always yours. 🖤</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

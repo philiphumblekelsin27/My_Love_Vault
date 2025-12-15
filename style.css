@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Georgia&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050505;
+    color: #f2f2f2;
+    font-family: 'Georgia', serif;
+    overflow-x: hidden;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.screen.active {
+    display: block;
+    animation: fadeIn 1.5s ease;
+}
+
+/* Backgrounds & Overlays */
+.bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), #000);
+    z-index: 1;
+}
+
+/* Content Layout */
+.content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    text-align: center;
+}
+
+/* Typography */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+#typingText {
+    white-space: pre-line;
+    min-height: 60px;
+}
+
+/* Inputs & Buttons */
+button,
+input {
+    padding: 14px 30px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-family: inherit;
+    font-size: 1rem;
+    margin-top: 15px;
+    outline: none;
+    transition: 0.3s;
+    border-radius: 4px;
+
+    /* Fixed: Added webkit prefix for Safari support */
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+input {
+    text-align: center;
+    letter-spacing: 3px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+button:hover {
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+#error {
+    color: #ff6b6b;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    height: 20px;
+}
+
+/* Vault Content */
+#vault {
+    background: #000;
+    padding-bottom: 100px;
+    z-index: 5;
+    position: relative;
+}
+
+.vault-container {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.time-msg {
+    text-align: center;
+    margin: 40px 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #aaa;
+}
+
+/* Moments (Images Only) */
+.moment {
+    margin: 60px 0;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 1s forwards;
+    background: #111;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #222;
+}
+
+/* Moments (Images AND Video) */
+.moment img,
+.moment video {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: #000;
+    /* Good for video loading state */
+}
+
+.caption {
+    margin-top: 15px;
+    font-style: italic;
+    color: #ccc;
+    font-size: 1rem;
+    font-family: 'Courier Prime', monospace;
+}
+
+/* Final Section */
+.final {
+    margin-top: 80px;
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid #222;
+}
+
+.heart-seal {
+    font-size: 3rem;
+    margin-top: 20px;
+    animation: pulse 2s infinite;
+}
+
+/* FUTURISTIC BUTTON */
+.secret-trigger-container {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.futuristic-btn {
+    position: relative;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+    font-family: 'Courier Prime', monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px 40px;
+    overflow: hidden;
+    transition: 0.4s;
+
+    /* Also added prefix here just in case */
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.futuristic-btn:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+/* SECRET TERMINAL OVERLAY */
+#secret {
+    position: fixed;
+    inset: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* The Futuristic "Opening" Animation */
+.terminal-window {
+    width: 100%;
+    max-width: 650px;
+    height: 0;
+    /* Starts closed */
+    background: #0a0a0a;
+    border: 1px solid #444;
+    overflow: hidden;
+    /* Hides content until open */
+    position: relative;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Class added by JS to trigger animation */
+.terminal-window.open {
+    animation: openTerminal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes openTerminal {
+    0% {
+        height: 2px;
+        opacity: 0;
+        width: 0%;
+    }
+
+    30% {
+        height: 2px;
+        opacity: 1;
+        width: 100%;
+    }
+
+    100% {
+        height: 80vh;
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+.terminal-header {
+    background: #fff;
+    color: #000;
+    padding: 10px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.close-btn {
+    background: transparent;
+    color: #000;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.scan-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    animation: scan 3s linear infinite;
+    display: none;
+    /* Shown via JS */
+}
+
+.secret-content {
+    padding: 30px;
+    overflow-y: auto;
+    height: 100%;
+    color: #ccc;
+    font-family: 'Courier Prime', monospace;
+    opacity: 0;
+    /* Starts invisible */
+    transition: opacity 1s ease 1s;
+    /* Delays appearance until window opens */
+}
+
+.terminal-window.open .secret-content {
+    opacity: 1;
+}
+
+.terminal-window.open .scan-line {
+    display: block;
+}
+
+.intro-secret {
+    color: #666;
+    border-bottom: 1px dashed #333;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.letter-body {
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+.letter-body p {
+    margin-bottom: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes scan {
+    0% {
+        top: 0%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}

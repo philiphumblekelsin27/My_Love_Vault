@@ -1,7 +1,7 @@
 {
     "name": "Our Vault",
     "short_name": "Vault",
-    "start_url": "./love.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#000000",
     "theme_color": "#000000",

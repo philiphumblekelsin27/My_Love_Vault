@@ -3,7 +3,7 @@ self.addEventListener("install", e => {
         caches.open("vault-cache").then(cache => {
             return cache.addAll([
                 "./",
-                "./love.html",
+                "./index.html",
                 "./style.css",
                 "./app.js"
             ]);
